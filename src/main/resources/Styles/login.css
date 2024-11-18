@@ -1,0 +1,30 @@
+.login-container {
+    -fx-background-color: #323232;
+}
+
+.login-sidebar {
+    -fx-background-color: #232323;
+}
+
+.login-content {
+    -fx-background-color: transparent;
+    -fx-padding: 32px;
+    -fx-font-size: 24px;
+}
+
+.login-content Label {
+    -fx-text-fill: #fff;
+    -fx-text-transform: capitalize;
+}
+
+.login-content TextField {
+    -fx-padding: 12px;
+    -fx-font-size: 16px;
+    -fx-background-color: #232323;
+    -fx-text-fill: #fff;
+}
+
+.login-content Button {
+    -fx-background-color: #61DBFB;
+    -fx-text-fill: white;
+}
