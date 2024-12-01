@@ -1,17 +1,10 @@
 package com.example.librarymanagementsystem.Controllers;
 
-import com.example.librarymanagementsystem.App;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.control.Button;
-import javafx.stage.Stage;
 
-import java.awt.*;
-import java.util.ArrayList;
-
-public class ClientDashboard {
+public class AdminDashboard {
     @FXML public AnchorPane contentRoot;
 
     private final String[] views = {"/views/searchBooks.fxml", "/views/myBooks.fxml", "/views/favorites.fxml"};
@@ -44,18 +37,9 @@ public class ClientDashboard {
 
 
     @FXML public void handleLogout() {
-        App.session.logout();
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/login.fxml"));
-            Scene scene = new Scene(loader.load());
-            Stage currentStage = (Stage) contentRoot.getScene().getWindow();
-            currentStage.setScene(scene);
-            currentStage.show();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        System.out.println("Logout");
     }
 
-    public ClientDashboard() {
+    public AdminDashboard() {
     }
 }

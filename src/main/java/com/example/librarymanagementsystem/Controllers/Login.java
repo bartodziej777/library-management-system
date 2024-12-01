@@ -35,9 +35,13 @@
 //}
 package com.example.librarymanagementsystem.Controllers;
 
+import com.example.librarymanagementsystem.App;
+import com.example.librarymanagementsystem.Models.User;
+import com.example.librarymanagementsystem.Models.UserService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -45,22 +49,28 @@ import javafx.scene.control.TextField;
 import java.awt.*;
 
 public class Login {
-    @FXML
-    public TextField login, password;
-    @FXML
-    public Button button;
+    @FXML public TextField login, password;
+    @FXML public Button button;
+    @FXML public Label error;
 
     @FXML
     public void handleLogin() {
-        System.out.println("Login");
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/clientDashboard.fxml"));
-            Scene scene = new Scene(loader.load());
-            Stage currentStage = (Stage) button.getScene().getWindow();
-            currentStage.setScene(scene);
-            currentStage.show();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        User user = UserService.authenticate(login.getText(), password.getText());
+        if(user!=null) {
+            try {
+                App.session.login(user.getUserID());
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/clientDashboard.fxml"));
+                Scene scene = new Scene(loader.load());
+                Stage currentStage = (Stage) button.getScene().getWindow();
+                currentStage.setScene(scene);
+                currentStage.show();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+        else {
+            error.setText("Login Failed");
+            error.setOpacity(1);
         }
     }
 }
