@@ -1,0 +1,23 @@
+.content-container {
+    -fx-background-color: #323232;
+}
+
+.aside-container {
+    -fx-background-color: #232323;
+    -fx-font-size: 24px;
+}
+
+.nav-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-transition: -fx-background-color 0.3s;
+}
+
+.nav-btn:hover {
+    -fx-text-fill: #61DBFB;
+}
+
+.logout-btn {
+    -fx-background-color: #61DBFB;
+    -fx-text-fill: white;
+}
