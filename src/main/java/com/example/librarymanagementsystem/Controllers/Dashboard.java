@@ -11,10 +11,10 @@ import javafx.stage.Stage;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class ClientDashboard {
+public class Dashboard {
     @FXML public AnchorPane contentRoot;
 
-    private final String[] views = {"/views/searchBooks.fxml", "/views/myBooks.fxml", "/views/favorites.fxml"};
+    private final String[] views = {"/views/searchBooks.fxml", "/views/myBooks.fxml", "/views/favorites.fxml", "/views/searchBooks.fxml", "/views/addBook.fxml"};
 
     @FXML public void changeView(int viewNum) {
         try {
@@ -23,7 +23,6 @@ public class ClientDashboard {
 
             contentRoot.getChildren().removeAll();
             contentRoot.getChildren().setAll(newView);
-
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -42,6 +41,14 @@ public class ClientDashboard {
         changeView(3);
     }
 
+    @FXML public void handleMenuBtn4() {
+        changeView(4);
+    }
+
+    @FXML public void handleMenuBtn5() {
+        changeView(5);
+    }
+
 
     @FXML public void handleLogout() {
         App.session.logout();
@@ -56,6 +63,6 @@ public class ClientDashboard {
         }
     }
 
-    public ClientDashboard() {
+    public Dashboard() {
     }
 }
