@@ -4,22 +4,21 @@ import com.example.librarymanagementsystem.App;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.awt.*;
 import java.util.ArrayList;
 
 public class Dashboard {
-    @FXML public AnchorPane contentRoot;
+    @FXML public VBox contentRoot;
 
     private final String[] views = {"/views/searchBooks.fxml", "/views/myBooks.fxml", "/views/favorites.fxml", "/views/searchBooks.fxml", "/views/addBook.fxml"};
 
     @FXML public void changeView(int viewNum) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(views[viewNum-1]));
-            AnchorPane newView = loader.load();
+            VBox newView = loader.load();
 
             contentRoot.getChildren().removeAll();
             contentRoot.getChildren().setAll(newView);

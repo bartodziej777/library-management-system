@@ -21,3 +21,7 @@
     -fx-background-color: #61DBFB;
     -fx-text-fill: white;
 }
+
+.searchbar {
+    -fx-font-size: 20px;
+}

@@ -3,12 +3,16 @@ package com.example.librarymanagementsystem.Models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserService {
+public class UserService extends Entity {
     private final static List<User> users = new ArrayList<>(loadDefaultUsers());
+
+    public UserService() {
+        super("user service");
+    }
 
     public static User authenticate(String login, String password) {
         for (User user : users) {
-            if (user.getLogin().equals(login) && user.getPassword().equals(password)) {
+            if (user.getName().equals(login) && user.getPassword().equals(password)) {
                 return user;
             }
         }
@@ -17,8 +21,8 @@ public class UserService {
 
     private static List<User> loadDefaultUsers() {
         List<User> defaultUsers = new ArrayList<>();
-        defaultUsers.add(new Client("client", "1234"));
-        defaultUsers.add(new Admin("admin", "1234"));
+        defaultUsers.add(new Reader("student", "1234"));
+        defaultUsers.add(new Librarian("john", "1234"));
         return defaultUsers;
     }
 

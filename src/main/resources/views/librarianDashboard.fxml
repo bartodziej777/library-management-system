@@ -33,7 +33,7 @@
       </VBox>
    </left>
    <right>
-      <AnchorPane fx:id="contentRoot" prefHeight="200.0" prefWidth="700.0" BorderPane.alignment="CENTER">
-      </AnchorPane>
+      <VBox fx:id="contentRoot" prefHeight="200.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+      </VBox>
    </right>
 </BorderPane>
