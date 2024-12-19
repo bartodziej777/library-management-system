@@ -2,22 +2,24 @@ package com.example.librarymanagementsystem.Models;
 
 import java.util.UUID;
 
-public class Session {
-    private int sessionID;
-    private boolean active;
-    private UUID loggedUserID;
+public class Session extends Entity {
+    private final int sessionID;
+    private User user;
 
     public Session(int sessionID) {
+        super(UUID.randomUUID().toString());
         this.sessionID = sessionID;
     }
 
     public void logout() {
-        this.active = false;
-        this.loggedUserID = null;
+        this.user = null;
     }
 
-    public void login(UUID userID) {
-        this.active = true;
-        this.loggedUserID = userID;
+    public void login(User user) {
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
     }
 }

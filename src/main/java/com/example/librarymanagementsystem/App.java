@@ -16,6 +16,7 @@ public class App extends Application {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/views/login.fxml"));
             primaryStage.setTitle("Library Management System");
+            primaryStage.setResizable(false);
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
         } catch(Exception e) {
