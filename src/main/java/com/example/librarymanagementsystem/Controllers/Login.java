@@ -22,7 +22,7 @@
 //
 //        try {
 //            // Ładujemy nowy plik FXML (view1.fxml)
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/clientDashboard.fxml"));
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/readerDashboard.fxml"));
 //            AnchorPane newView = loader.load();
 //
 //            // Zamieniamy zawartość kontenera (rootPane) na nowy widok
@@ -36,6 +36,7 @@
 package com.example.librarymanagementsystem.Controllers;
 
 import com.example.librarymanagementsystem.App;
+import com.example.librarymanagementsystem.Models.Reader;
 import com.example.librarymanagementsystem.Models.User;
 import com.example.librarymanagementsystem.Models.UserService;
 import javafx.fxml.FXML;
@@ -46,20 +47,20 @@ import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-import java.awt.*;
-
 public class Login {
     @FXML public TextField login, password;
     @FXML public Button button;
     @FXML public Label error;
+
+    private final String[] views = {"/views/readerDashboard.fxml", "/views/librarianDashboard.fxml"};
 
     @FXML
     public void handleLogin() {
         User user = UserService.authenticate(login.getText(), password.getText());
         if(user!=null) {
             try {
-                App.session.login(user.getUserID());
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/clientDashboard.fxml"));
+                App.session.login(user);
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(user instanceof Reader ? views[0] : views[1]));
                 Scene scene = new Scene(loader.load());
                 Stage currentStage = (Stage) button.getScene().getWindow();
                 currentStage.setScene(scene);

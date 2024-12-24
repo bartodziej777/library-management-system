@@ -2,24 +2,23 @@ package com.example.librarymanagementsystem.Models;
 
 import java.util.UUID;
 
-public class User {
-    private UUID userID;
-    private final String login, password;
+public class User extends Entity {
+    private final String password;
 
-    public User(String login, String password) {
-        this.login = login;
+    public User(String name, String password) {
+        super(name);
         this.password = password;
     }
 
-    public UUID getUserID() {
-        return this.userID;
+    public int getID() {
+        return ID;
     }
 
-    public String getLogin() {
-        return this.login;
+    public String getName() {
+        return name;
     }
 
     public String getPassword() {
-        return this.password;
+        return password;
     }
 }
