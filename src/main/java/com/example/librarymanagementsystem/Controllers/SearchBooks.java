@@ -2,6 +2,7 @@ package com.example.librarymanagementsystem.Controllers;
 
 import com.example.librarymanagementsystem.App;
 import com.example.librarymanagementsystem.Models.Book;
+import com.example.librarymanagementsystem.Models.Librarian;
 import com.example.librarymanagementsystem.Models.Library;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -51,6 +52,10 @@ public class SearchBooks {
             if(!book.getIsAvailable() && book.getLoanBy() == App.session.getUser()) {
                 availabilityLabel.getStyleClass().add("green");
                 availabilityLabel.setText("You have this book until: " + book.getLoanDue().toString());
+                if(App.session.getUser() instanceof  Librarian) {
+                    actionButton.setText("Delete");
+                    actionButton.setDisable(true);
+                }
                 actionButton.setText("Return");
                 actionButton.getStyleClass().add("borrow-btn");
                 actionButton.setOnAction(e -> handleReturnBook(book.getID()));
@@ -59,12 +64,21 @@ public class SearchBooks {
                 availabilityLabel.getStyleClass().add("green");
                 availabilityLabel.setText("Book is available now");
                 actionButton.getStyleClass().add("borrow-btn");
-                actionButton.setOnAction(e -> handleBorrowBook(book.getID()));
+                if(App.session.getUser() instanceof  Librarian) {
+                    actionButton.setText("Delete");
+                    actionButton.setOnAction(e -> handleDeleteBook(book.getID()));
+                }
+                else {
+                    actionButton.setOnAction(e -> handleBorrowBook(book.getID()));
+                }
             }
             else {
                 availabilityLabel.getStyleClass().add("red");
                 availabilityLabel.setText("Book will be available since: " + book.getLoanDue().toString());
                 actionButton.setDisable(true);
+                if(App.session.getUser() instanceof  Librarian) {
+                    actionButton.setText("Delete");
+                }
                 actionButton.getStyleClass().add("borrow-btn--inactive");
             }
 
@@ -113,6 +127,11 @@ public class SearchBooks {
 
     public void handleReturnBook(int bookID) {
         Library.returnBook(App.session.getUser(), bookID);
+        handleSearch();
+    }
+
+    public void handleDeleteBook(int bookID) {
+        Library.removeBook(bookID);
         handleSearch();
     }
 }

@@ -78,3 +78,16 @@
 .green {
     -fx-text-fill: green;
 }
+
+.input {
+    -fx-text-fill: #fff;
+    -fx-font-size: 20px;
+    -fx-padding: 5px 10px;
+    -fx-background-color: #232323;
+}
+
+.input-label {
+    -fx-text-fill: #fff;
+    -fx-font-size: 20px;
+    -fx-padding: 5px 0;
+}
