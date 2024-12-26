@@ -30,7 +30,7 @@ public class Library {
                 returnedBook = book;
                 returnedBook.setIsAvailable(true);
                 returnedBook.setLoanDue(null);
-                returnedBook.setLoanBy(user);
+                returnedBook.setLoanBy(null);
             }
         }
     }

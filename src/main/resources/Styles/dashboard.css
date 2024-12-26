@@ -14,14 +14,67 @@
 }
 
 .nav-btn:hover {
-    -fx-text-fill: #61DBFB;
+    -fx-text-fill: #0EB1D2;
 }
 
 .logout-btn {
-    -fx-background-color: #61DBFB;
+    -fx-background-color: #0EB1D2;
     -fx-text-fill: white;
 }
 
 .searchbar {
     -fx-font-size: 20px;
+    -fx-text-fill: #fff;
+}
+
+.book-pane {
+    -fx-padding: 10px 20px;
+    -fx-text-fill: #fff;
+}
+
+.book-pane-color {
+    -fx-background-color: #232323;
+}
+
+.book-label {
+    -fx-text-fill: #fff;
+}
+
+.count-label {
+    -fx-text-fill: #fff;
+    -fx-font-size: 20px;
+    -fx-padding: 10px 20px;
+}
+
+.borrow-btn {
+    -fx-cursor: hand;
+    -fx-background-color: #0EB1D2;
+    -fx-text-fill: #fff;
+}
+
+.borrow-btn:hover {
+    -fx-background-color: #1FC2E3;
+}
+
+.borrow-btn--inactive {
+    -fx-background-color: #2B4141;
+    -fx-cursor: none;
+    -fx-text-fill: #fff;
+}
+
+.clear-btn {
+    -fx-background-color: #2B4141;
+    -fx-text-fill: #fff;
+}
+
+.clear-btn:hover {
+    -fx-background-color: #3C5252;
+}
+
+.red {
+    -fx-text-fill: red;
+}
+
+.green {
+    -fx-text-fill: green;
 }
