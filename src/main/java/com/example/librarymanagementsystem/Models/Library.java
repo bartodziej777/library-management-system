@@ -47,8 +47,8 @@ public class Library {
         books.add(book);
     }
 
-    public static boolean removeBook(int bookID){
-        return books.removeIf(book -> book.getID() == bookID);
+    public static void removeBook(int bookID){
+        books.removeIf(book -> book.getID() == bookID);
     }
 
     public static List<Book> getBooks() {

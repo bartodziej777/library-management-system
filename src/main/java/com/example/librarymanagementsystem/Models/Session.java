@@ -3,12 +3,10 @@ package com.example.librarymanagementsystem.Models;
 import java.util.UUID;
 
 public class Session extends Entity {
-    private final int sessionID;
     private User user;
 
-    public Session(int sessionID) {
+    public Session() {
         super(UUID.randomUUID().toString());
-        this.sessionID = sessionID;
     }
 
     public void logout() {

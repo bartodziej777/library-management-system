@@ -5,6 +5,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
@@ -12,14 +14,24 @@
 
 <BorderPane maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymanagementsystem.Controllers.Login">
    <left>
-      <AnchorPane prefHeight="200.0" prefWidth="512.0" styleClass="login-aside" stylesheets="@../styles/login.css" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="768.0" prefWidth="512.0" styleClass="login-aside" stylesheets="@../styles/login.css" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="278.0" fitWidth="278.0" layoutX="103.0" layoutY="230.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="240.0" AnchorPane.leftAnchor="118.0" AnchorPane.rightAnchor="118.0" AnchorPane.topAnchor="240.0">
+               <image>
+                  <Image url="@../media/logo.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
    </left>
    <right>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="512.0" spacing="15.0" styleClass="login-content" stylesheets="@../styles/login.css" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="login" promptText="login" />
-            <PasswordField fx:id="password" promptText="password" />
-            <Button fx:id="button" mnemonicParsing="false" onAction="#handleLogin" text="Login" />
+            <TextField fx:id="login" promptText="login" styleClass="input" stylesheets="@../styles/dashboard.css" />
+            <PasswordField fx:id="password" onAction="#handleLogin" promptText="password" styleClass="input" stylesheets="@../styles/dashboard.css" />
+            <Button fx:id="button" mnemonicParsing="false" onAction="#handleLogin" prefWidth="100.0" styleClass="borrow-btn" stylesheets="@../styles/dashboard.css" text="Login">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
             <Label fx:id="error" opacity="0.0" text="Error message" textFill="RED">
                <font>
                   <Font size="20.0" />

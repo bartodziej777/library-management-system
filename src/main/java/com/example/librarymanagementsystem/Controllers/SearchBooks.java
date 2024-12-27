@@ -1,6 +1,7 @@
 package com.example.librarymanagementsystem.Controllers;
 
 import com.example.librarymanagementsystem.App;
+import com.example.librarymanagementsystem.Interfaces.LoanOperations;
 import com.example.librarymanagementsystem.Models.Book;
 import com.example.librarymanagementsystem.Models.Librarian;
 import com.example.librarymanagementsystem.Models.Library;
@@ -17,7 +18,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SearchBooks {
+public class SearchBooks implements LoanOperations {
     @FXML public TextField searchbar;
     @FXML public Button searchBtn;
     @FXML public Button clearBtn;
@@ -69,7 +70,7 @@ public class SearchBooks {
                     actionButton.setOnAction(e -> handleDeleteBook(book.getID()));
                 }
                 else {
-                    actionButton.setOnAction(e -> handleBorrowBook(book.getID()));
+                    actionButton.setOnAction(e -> handleBorrowBook(book));
                 }
             }
             else {
@@ -120,11 +121,13 @@ public class SearchBooks {
         displayResults(books);
     }
 
-    public void handleBorrowBook(int bookID) {
-        Library.borrowBook(App.session.getUser(), bookID, 14);
+    @Override
+    public void handleBorrowBook(Book book) {
+        Library.borrowBook(App.session.getUser(), book.getID(), 14);
         handleSearch();
     }
 
+    @Override
     public void handleReturnBook(int bookID) {
         Library.returnBook(App.session.getUser(), bookID);
         handleSearch();

@@ -13,12 +13,12 @@ public class Reader extends User implements LoanOperations {
     }
 
     @Override
-    public void borrowBook() {
-
+    public void handleBorrowBook(Book book) {
+        books.add(book);
     }
 
     @Override
-    public void returnBook() {
-
+    public void handleReturnBook(int bookID) {
+        books.removeIf(book -> book.getID() == bookID);
     }
 }

@@ -7,13 +7,10 @@ import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.awt.*;
-import java.util.ArrayList;
-
 public class Dashboard {
     @FXML public VBox contentRoot;
 
-    private final String[] views = {"/views/searchBooks.fxml", "/views/myBooks.fxml", "/views/favorites.fxml", "/views/searchBooks.fxml", "/views/addBook.fxml"};
+    private final String[] views = {"/views/searchBooks.fxml", "/views/myBooks.fxml", "/views/searchBooks.fxml", "/views/addBook.fxml"};
 
     @FXML public void changeView(int viewNum) {
         try {
@@ -36,18 +33,9 @@ public class Dashboard {
         changeView(2);
     }
 
-    @FXML public void handleMenuBtn3() {
-        changeView(3);
-    }
+    @FXML public void handleMenuBtn3() {changeView(3);}
 
-    @FXML public void handleMenuBtn4() {
-        changeView(4);
-    }
-
-    @FXML public void handleMenuBtn5() {
-        changeView(5);
-    }
-
+    @FXML public void handleMenuBtn4() {changeView(4);}
 
     @FXML public void handleLogout() {
         App.session.logout();

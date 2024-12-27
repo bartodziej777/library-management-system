@@ -1,7 +1,6 @@
 package com.example.librarymanagementsystem.Models;
 
 import java.time.LocalDate;
-import java.util.UUID;
 
 public class Book extends Entity {
     private int releaseYear;
