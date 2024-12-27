@@ -12,7 +12,6 @@ public class App extends Application {
     public static Session session = new Session();
     @Override
     public void start(Stage primaryStage) throws Exception{
-        UserService.ShowAllUsers();
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/views/login.fxml"));
             primaryStage.setTitle("Library Management System");

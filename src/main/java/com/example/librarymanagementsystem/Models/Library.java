@@ -1,5 +1,7 @@
 package com.example.librarymanagementsystem.Models;
 
+import com.example.librarymanagementsystem.Enums.Status;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +19,7 @@ public class Library {
             }
         }
         if (borrowedBook != null) {
-            borrowedBook.setIsAvailable(false);
+            borrowedBook.setStatus(Status.UNAVAILABLE);
             borrowedBook.setLoanDue(LocalDate.now().plusDays(borrowingDays));
             borrowedBook.setLoanBy(user);
         }
@@ -28,18 +30,19 @@ public class Library {
         for (Book book : books) {
             if (book.getID() == bookID && book.getLoanBy() == user) {
                 returnedBook = book;
-                returnedBook.setIsAvailable(true);
+                returnedBook.setStatus(Status.AVAILABLE);
                 returnedBook.setLoanDue(null);
                 returnedBook.setLoanBy(null);
             }
         }
     }
 
+    //loading predefined books enabling program demonstrations
     private static List<Book> loadDefaultBooks() {
         List<Book> defaultBooks = new ArrayList<>();
-        defaultBooks.add(new Book("Harry Potter", "JK.Rowling", 1997));
-        defaultBooks.add(new Book("1984", "George Orwell", 1949));
-        defaultBooks.add(new Book("The Hobbit", "JRR Tolkien", 1937));
+        defaultBooks.add(new Book("Harry Potter", Status.AVAILABLE,"JK.Rowling", 1997));
+        defaultBooks.add(new Book("1984", Status.AVAILABLE,"George Orwell", 1949));
+        defaultBooks.add(new Book("The Hobbit", Status.AVAILABLE,"JRR Tolkien", 1937));
         return defaultBooks;
     }
 

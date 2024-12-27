@@ -1,5 +1,6 @@
 package com.example.librarymanagementsystem.Controllers;
 
+import com.example.librarymanagementsystem.Enums.Status;
 import com.example.librarymanagementsystem.Models.Book;
 import com.example.librarymanagementsystem.Models.Library;
 import javafx.application.Platform;
@@ -43,7 +44,7 @@ public class AddBook {
 
         statusLabel.setOpacity(0);
 
-        Book book = new Book(bookTitle, bookAuthor, releaseYearValue);
+        Book book = new Book(bookTitle, Status.AVAILABLE ,bookAuthor, releaseYearValue);
         Library.addBook(book);
 
         Stage popupStage = new Stage();

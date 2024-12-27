@@ -1,19 +1,19 @@
 package com.example.librarymanagementsystem.Models;
 
+import com.example.librarymanagementsystem.Enums.Status;
+
 import java.time.LocalDate;
 
 public class Book extends Entity {
     private int releaseYear;
     private String author;
-    private boolean isAvailable;
     private LocalDate loanDue;
     private User loanBy;
 
-    public Book(String title, String author, int releaseYear) {
-        super(title);
+    public Book(String title, Status status, String author, int releaseYear) {
+        super(title, status);
         this.author = author;
         this.releaseYear = releaseYear;
-        this.isAvailable = true;
         this.loanDue = null;
         this.loanBy = null;
     }
@@ -26,16 +26,16 @@ public class Book extends Entity {
         return name;
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     public String getAuthor() {
         return author;
-    }
-
-    public void setIsAvailable(boolean isAvailable) {
-        this.isAvailable = isAvailable;
-    }
-
-    public boolean getIsAvailable() {
-        return isAvailable;
     }
 
     public void setLoanDue(LocalDate loanDue) {

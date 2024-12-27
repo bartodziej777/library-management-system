@@ -1,10 +1,12 @@
 package com.example.librarymanagementsystem.Controllers;
 
 import com.example.librarymanagementsystem.App;
+import com.example.librarymanagementsystem.Enums.Status;
 import com.example.librarymanagementsystem.Interfaces.LoanOperations;
 import com.example.librarymanagementsystem.Models.Book;
 import com.example.librarymanagementsystem.Models.Librarian;
 import com.example.librarymanagementsystem.Models.Library;
+import com.example.librarymanagementsystem.Models.Reader;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -28,8 +30,6 @@ public class SearchBooks implements LoanOperations {
 
     public SearchBooks() {
         books = Library.getBooks();
-        books.getFirst().setLoanDue(LocalDate.of(2025, 3, 2));
-        books.getFirst().setIsAvailable(false);
     }
 
     @FXML
@@ -50,7 +50,7 @@ public class SearchBooks implements LoanOperations {
             Label availabilityLabel = new Label();
             Button actionButton = new Button("Borrow");
 
-            if(!book.getIsAvailable() && book.getLoanBy() == App.session.getUser()) {
+            if(book.getStatus() == Status.UNAVAILABLE && book.getLoanBy() == App.session.getUser()) {
                 availabilityLabel.getStyleClass().add("green");
                 availabilityLabel.setText("You have this book until: " + book.getLoanDue().toString());
                 if(App.session.getUser() instanceof  Librarian) {
@@ -61,7 +61,7 @@ public class SearchBooks implements LoanOperations {
                 actionButton.getStyleClass().add("borrow-btn");
                 actionButton.setOnAction(e -> handleReturnBook(book.getID()));
             }
-            else if(book.getIsAvailable()) {
+            else if(book.getStatus() == Status.AVAILABLE) {
                 availabilityLabel.getStyleClass().add("green");
                 availabilityLabel.setText("Book is available now");
                 actionButton.getStyleClass().add("borrow-btn");
@@ -124,12 +124,14 @@ public class SearchBooks implements LoanOperations {
     @Override
     public void handleBorrowBook(Book book) {
         Library.borrowBook(App.session.getUser(), book.getID(), 14);
+        ((Reader) App.session.getUser()).handleBorrowBook(book);
         handleSearch();
     }
 
     @Override
     public void handleReturnBook(int bookID) {
         Library.returnBook(App.session.getUser(), bookID);
+        ((Reader) App.session.getUser()).handleReturnBook(bookID);
         handleSearch();
     }
 

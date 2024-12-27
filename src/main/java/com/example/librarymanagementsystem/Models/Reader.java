@@ -21,4 +21,8 @@ public class Reader extends User implements LoanOperations {
     public void handleReturnBook(int bookID) {
         books.removeIf(book -> book.getID() == bookID);
     }
+
+    public List<Book> getBooks() {
+        return books;
+    }
 }

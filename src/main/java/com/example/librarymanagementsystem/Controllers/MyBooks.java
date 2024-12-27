@@ -3,6 +3,7 @@ package com.example.librarymanagementsystem.Controllers;
 import com.example.librarymanagementsystem.App;
 import com.example.librarymanagementsystem.Models.Book;
 import com.example.librarymanagementsystem.Models.Library;
+import com.example.librarymanagementsystem.Models.Reader;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -12,15 +13,13 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Font;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class MyBooks {
     @FXML public VBox booksContainer;
+    Reader reader = (Reader) App.session.getUser();
     List<Book> books;
 
-    public MyBooks() {
-        books = Library.getBooks();
-    }
+    public MyBooks() {}
 
     @FXML
     public void initialize() {
@@ -28,9 +27,7 @@ public class MyBooks {
     }
 
     public void displayBooks() {
-        books = Library.getBooks().stream()
-                .filter(book -> book.getLoanBy() == App.session.getUser())
-                .collect(Collectors.toList());
+        books = reader.getBooks();
 
         booksContainer.getChildren().clear();
         Label countLabel = new Label("You have " + books.size() + " books");
@@ -82,6 +79,7 @@ public class MyBooks {
 
     public void handleReturnBook(int bookID) {
         Library.returnBook(App.session.getUser(), bookID);
+        reader.handleReturnBook(bookID);
         displayBooks();
     }
 }

@@ -11,7 +11,5 @@ module com.example.librarymanagementsystem {
     exports com.example.librarymanagementsystem;
     exports com.example.librarymanagementsystem.Controllers;
     exports com.example.librarymanagementsystem.Models;
-    //exports com.example.librarymanagementsystem.Controllers.Admin;
-    //exports com.example.librarymanagementsystem.Controllers.Client;
-    //exports com.example.librarymanagementsystem.Views;
+    exports com.example.librarymanagementsystem.Enums;
 }

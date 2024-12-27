@@ -1,12 +1,14 @@
 package com.example.librarymanagementsystem.Models;
 
+import com.example.librarymanagementsystem.Enums.Status;
+
 import java.util.UUID;
 
 public class Session extends Entity {
     private User user;
 
     public Session() {
-        super(UUID.randomUUID().toString());
+        super(UUID.randomUUID().toString(), Status.ACTIVE);
     }
 
     public void logout() {

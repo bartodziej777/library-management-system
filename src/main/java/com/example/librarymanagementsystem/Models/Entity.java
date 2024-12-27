@@ -6,11 +6,11 @@ public abstract class Entity {
     protected final int ID;
     private static int counter = 0;
     protected String name;
-    private Status status;
+    protected Status status;
 
-    public Entity(String name) {
+    public Entity(String name, Status status) {
         this.ID = counter++;
         this.name = name;
-        this.status = Status.ACTIVE;
+        this.status = status;
     }
 }
