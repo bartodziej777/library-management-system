@@ -2,7 +2,7 @@
 
 ## Overview
 
-The **Library Management System** is a simple desktop application built with JavaFX that simulates the functionality of a library management system. It enables users to borrow and return books as library patrons and allows librarians to add and remove books from the catalog. The application is designed to be an intuitive and efficient tool for basic library operations.
+The **Library Management System** is a simple desktop application built with JavaFX that simulates the functionality of a library management system. It enables users to borrow and return books as library patrons and allows librarians to add and remove books from the catalog.
 
 ## Features
 
@@ -54,7 +54,7 @@ To run the application, ensure you have the following prerequisites:
 
 4. Open the project in an IDE with JavaFX support (e.g., IntelliJ IDEA, Eclipse).  
 5. Configure the JavaFX library path in your IDE settings.  
-6. Run the main class to launch the application.
+6. Run the App class to launch the application.
 
 ## Predefined User Accounts
 
@@ -93,4 +93,4 @@ Below are screenshots showcasing the application in action:
 
 The following UML diagram provides an overview of the system's architecture:
 
-![UML Diagram](path/to/uml_diagram.png)
+![UML Diagram](images/uml.png)
