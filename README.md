@@ -93,4 +93,4 @@ Below are screenshots showcasing the application in action:
 
 The following UML diagram provides an overview of the system's architecture:
 
-![UML Diagram](images/uml.png)
+![UML Diagram](images/new_uml.png)
